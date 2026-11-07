@@ -1,3 +1,4 @@
+
 import streamlit as st
 
 st.set_page_config(
@@ -74,7 +75,7 @@ VEHICLE_DATABASE = {
         "pcd": "5x115mm (Heavy Duty Muscle Hub)", "bore": "71.5mm", "oem_w": 11.0, "oem_et": -2.5, "oem_dia": 20, "oem_txt": "20x11.0\" ET-2.5 Widebody Forged | 305/35ZR20",
         "sizes": {
             "20\" Factory Widebody": {"wheel": "20x11.0\" ET-2.5 Square Setup", "tire": "305/35R20 High Traction Muscle Radial", "note": "Massive factory square track alignment. Sits completely flush with plastic widebody flare lips."},
-            "20\" Aggressive Deep Lip": {"wheel": "20x11.0\" ET-15 Front / 20x12.0\" ET-20 Rear", "tire": "305/35R20 & 315/35R20 Thick Compound", "note": "Pushes rear lip out another 35.1mm closer to the edge. Demands immense barrel concavity for a muscular track presence."},
+            "20\" Aggressive Deep Lip": {"wheel": "20x11.0\" ET-15 Front / 20x12.0\" ET-20 Rear", "tire": "305/35R20 & 315/35R20 Thick Muscle Tire", "note": "Pushes rear lip out another 35.1mm closer to the edge. Demands immense barrel concavity for a muscular track presence."},
             "21\" Custom Cruiser": {"wheel": "21x11.0\" ET-5 Front / Rear", "tire": "295/30R21 Low-Profile Thin Setup", "note": "Upsizes diameter for max car-show presence. Thin aspect rubber keeps body lines clean without inner liner rub."}
         }
     },
