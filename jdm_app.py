@@ -6,7 +6,7 @@ st.set_page_config(
     layout="centered"
 )
 
-# Classic Retro Style Injection
+# Classic Retro Style Injection Matrix
 st.markdown("""
     <style>
         .stApp { background-color: #008080 !important; color: #000000 !important; font-family: "MS Sans Serif", Tahoma, Arial, sans-serif !important; }
@@ -14,71 +14,59 @@ st.markdown("""
         .win98-inner-inset { background-color: #c0c0c0; border-top: 2px solid #808080; border-left: 2px solid #808080; border-right: 2px solid #fff; border-bottom: 2px solid #fff; padding: 12px; margin-top: 4px; }
         .win98-titlebar { background: linear-gradient(90deg, #000080, #1084d0); color: #ffffff; padding: 4px 6px; font-weight: bold; font-size: 0.95rem; }
         .win98-readout { background-color: #ffffff; color: #000000; border-top: 2px solid #808080; border-left: 2px solid #808080; border-right: 2px solid #fff; border-bottom: 2px solid #fff; padding: 10px; font-family: monospace; font-size: 0.95rem; }
-        label, p, h3, h4 { color: #000000 !important; font-weight: bold !important; }
+        label, p, h3, h4, span { color: #000000 !important; font-weight: bold !important; }
+        .fit-ok { color: #008000 !important; font-weight: bold; }
+        .fit-warn { color: #A52A2A !important; font-weight: bold; }
     </style>
 """, unsafe_allow_html=True)
 
 # ---------------------------------------------------------
-# VEHICLE MECHANICAL MATRIX DICTIONARY (YOUR CLAUDE DATA)
+# COMPREHENSIVE MULTI-SIZE DIAMETER MATRIX DICTIONARY
 # ---------------------------------------------------------
 VEHICLE_DATABASE = {
     "Subaru Legacy GT-B (BH5 Chassis / KKC)": {
         "confirmed": "Subaru Legacy GT-B E-Tune II (BH5 Chassis)",
-        "pcd": "5x100mm", "bore": "56.1mm", "oem": "17x7.0\" ET+55 | 215/45R17",
-        "perf_specs": "17x8.0\" or 18x8.0\" ET+45 to ET+42", "perf_tire": "215/45R17 or 225/40R18 Thick Compound", "perf_note": "Widens barrel by 1\", pushes wheel lip out 20mm closer to fender line. Perfect square track look without rubbing inner strut towers.",
-        "stretch_specs": "18x9.0\" ET+35 to ET+30 (Aggressive Low Drop)", "stretch_tire": "215/40R18 Stretched Angled Sidewall", "stretch_note": "Angled tire tread ducks inside wheel arches. Fender lip rolling and negative camber adjustment required to protect metal.",
-        "thin_specs": "18x7.5\" ET+48 (Low-Profile Cruiser)", "thin_tire": "215/35R18 Ultra-Thin Sidewall", "thin_note": "Gives an extreme slammed cruise height stance with minimal tire profile cushion. Watch out for potholes."
+        "pcd": "5x100mm", "bore": "56.1mm", "oem_w": 7.0, "oem_et": 55, "oem_dia": 17, "oem_txt": "17x7.0\" ET+55 | 215/45R17",
+        "sizes": {
+            "16\" Sizing Strategy": {"wheel": "16x7.5\" ET+48", "tire": "205/55R16 Thick Winter Track", "note": "Perfect downsized layout for high-cushion rubber profiles. Safe internal suspension tower clearance."},
+            "17\" Sizing Strategy": {"wheel": "17x8.0\" ET+45", "tire": "215/45R17 Square Performance", "note": "Moves rim face out 16mm. Keeps original rolling radius while aligning lips with fender edge tracks."},
+            "18\" Sizing Strategy": {"wheel": "18x9.0\" ET+35", "tire": "225/40R18 Low Stretched Profile", "note": "Aggressive upsize setup. Stretched sloped sidewalls are required to keep tyre tread blocks clear of metal seam lines."}
+        }
+    },
+    "Mazda RX-7 (FD3S Chassis)": {
+        "confirmed": "Mazda RX-7 Twin Turbo (FD3S Fourth Generation)",
+        "pcd": "5x114.3mm", "bore": "67.1mm", "oem_w": 8.0, "oem_et": 50, "oem_dia": 16, "oem_txt": "16x8.0\" ET+50 | 225/50R16",
+        "sizes": {
+            "16\" Sizing Strategy": {"wheel": "16x8.0\" ET+38", "tire": "225/50R16 OEM Replacement Track", "note": "Period-correct style. Moves the face out 12mm closer to the guard lines while maintaining stock comfort levels."},
+            "17\" Sizing Strategy": {"wheel": "17x9.0\" ET+40 Front / Rear", "tire": "255/40R17 Thick Performance Radial", "note": "The legendary square motorsport configuration. Perfect balance of maximum traction footprint without front fender scrub."},
+            "18\" Sizing Strategy": {"wheel": "18x9.5\" ET+22 F / 18x10.0\" ET+20 R", "tire": "225/40R18 & 235/40R18 Stretched Stance", "note": "Extreme deep-dish concavity profile. Tire carcass stretched narrow to clear internal chassis framework. Rear arch rolling highly advised."}
+        }
     },
     "Honda Civic Type R (EK9 Chassis)": {
         "confirmed": "JDM Honda Civic Type R (EK9 Track Platform)",
-        "pcd": "5x114.3mm (Heavy-Duty Racing Hub)", "bore": "64.1mm", "oem": "15x6.0\" ET+50 | 195/55R15",
-        "perf_specs": "16x7.0\" ET+40 or 16x7.5\" ET+42", "perf_tire": "205/45R16 Track / Performance Compound", "perf_note": "Moves the wheel lip perfectly flush with the classic factory EK9 type-R racing fenders. Maximum cornering response.",
-        "stretch_specs": "16x8.0\" ET+35 (Aggressive Stance Offset)", "stretch_tire": "205/40R16 Stretched Carcass Setup", "stretch_note": "Curves tire wall inward to allow extra clearance over wide high-performance coilover setups.",
-        "thin_specs": "17x7.0\" ET+45 (Thin Profile Cruiser)", "thin_tire": "205/35R17 Low Profile Tire Lines", "thin_note": "Upsizes to a larger wheel layout with flat, thin rubber lines. Fills out arches completely."
+        "pcd": "5x114.3mm", "bore": "64.1mm", "oem_w": 6.0, "oem_et": 50, "oem_dia": 15, "oem_txt": "15x6.0\" ET+50 | 195/55R15",
+        "sizes": {
+            "15\" Sizing Strategy": {"wheel": "15x7.0\" ET+42", "tire": "195/55R15 Classic Track Spec", "note": "Keeps signature lightweight wheel response. Widens rim track by 1\" to sit perfectly inline with racing guards."},
+            "16\" Sizing Strategy": {"wheel": "16x7.5\" ET+40", "tire": "205/45R16 Flush Performance Upgrade", "note": "The ultimate upgrade diameter. Delivers razor-sharp steering feedback with perfect arch filling clearances."},
+            "17\" Sizing Strategy": {"wheel": "17x8.0\" ET+35", "tire": "205/40R17 Low Profile Stretch", "note": "Maximum wheel face visual presence. Thin tire footprint curves shoulders away from inner plastic engine liners."}
+        }
     },
-    "Honda Civic Hatch/Coupe (EK Chassis)": {
-        "confirmed": "Standard Honda Civic Coupe/Hatch (EK Base Platform)",
-        "pcd": "4x100mm (Economy 4-Lug Commuter Hub)", "bore": "56.1mm", "oem": "14x5.5\" ET+45 | 185/65R14",
-        "perf_specs": "15x7.0\" ET+35 or 16x7.0\" ET+40", "perf_tire": "195/50R15 High Response Compound", "perf_note": "Pushes the outer rim edge cleanly out to the fender border without rubbing inner plastic liners.",
-        "stretch_specs": "16x8.0\" ET+25 (Stretched Stance Layout)", "stretch_tire": "195/40R16 Deep Stretch Profile", "stretch_note": "Requires rear quarter panel sheet metal manipulation or rolling to keep tire shoulders clean under compression.",
-        "thin_specs": "16x7.0\" ET+42 (Clean Commuter Style)", "thin_tire": "195/40R16 Thin Footprint Setup", "thin_note": "Provides a clean, sharp cosmetic update with thin tire aesthetics and no speedometer variation anomalies."
-    },
-    "Nissan Silvia / 240SX (S14 Turbo Platforms)": {
-        "confirmed": "Nissan Silvia / 240SX (S14 Base & Spec-R)",
-        "pcd": "5x114.3mm (Turbo Multi-Lug Hub / Base 4-lug varies)", "bore": "66.1mm", "oem": "16x6.5\" ET+40 | 205/55R16",
-        "perf_specs": "17x9.0\" ET+22 or 18x9.0\" ET+22 (Signature Fitment)", "perf_tire": "235/40R17 or 245/40R18 Performance Radial", "perf_note": "The absolute signature golden track footprint for an S-chassis. Sits perfectly flush with factory metal body lines.",
-        "stretch_specs": "18x9.5\" ET+12 (Aggressive Wide Lip Stance)", "stretch_tire": "225/40R18 Stretched Low-Profile Tyre", "stretch_note": "Pokes 8mm past stock fender boundaries. Requires rolling inner sheet-metal lines to avoid carving up tire shoulders.",
-        "thin_specs": "18x8.5\" ET+25 (Clean Daily Driver)", "thin_tire": "215/35R18 Ultra Thin Profile Style", "thin_note": "Maintains low structural body clearance while emphasizing massive wheel lip depth without fender modification."
-    },
-    "Nissan Skyline GT-R (R34 Chassis)": {
-        "confirmed": "Nissan Skyline GT-R (R34 Forged Widebody Platform)",
-        "pcd": "5x114.3mm (Heavy-Duty Track Pitch)", "bore": "66.1mm", "oem": "18x9.0\" ET+30 | 244/40ZR18 Forged Alloy",
-        "perf_specs": "18x10.5\" ET+15 or ET+12 Muscular Setup", "perf_tire": "275/35R18 Track Spec Sticky Compounds", "perf_note": "Builds that legendary, beefy high-traction motorsport track presence. Sits tight to stock arch inner walls.",
-        "flush_specs": "18x9.5\" ET+12 or 19x9.5\" ET+12 Optimized", "flush_tire": "255/35R19 Performance Track Profile Layout", "flush_note": "The R34 has massive factory flared quarters that look phenomenal with deep aggressive offset wheel hub placements.",
-        "stretch_specs": "19x11.0\" ET+15 (Deep Dish Over-Stance)", "stretch_tire": "255/35R19 Heavy Stretched Sidewall", "stretch_note": "Maximizes wheel barrel depth and deep-dish concavity while letting the sloped tire tread clear structural body framework."
-    },
-    "Mitsubishi Lancer Evolution VIII / IX": {
-        "confirmed": "Mitsubishi Lancer Evolution VIII / IX (CT9A Chassis)",
-        "pcd": "5x114.3mm", "bore": "67.1mm", "oem": "17x8.0\" ET+38 Enkei Factory Base",
-        "perf_specs": "18x9.0\" ET+29 or ET+30 Performance Tracking", "perf_tire": "245/40R18 High Adhesion Track Radial", "perf_note": "The ultimate setup for this chassis. Fills out factory blister arches perfectly with maximum rubber contact patch.",
-        "stretch_specs": "18x9.5\" ET+22 (Aggressive Outer Edge Poke)", "stretch_tire": "235/40R18 Stretched Compound Setup", "stretch_note": "Pokes 5mm outward past factory metal lines. Requires rolling rear quarter panel inner tabs to eliminate tire rub.",
-        "thin_specs": "19x8.5\" ET+35 (Large Diameter Show Setup)", "thin_tire": "235/30R19 Ultra Low-Profile Tyre Lines", "thin_note": "Accentuates massive brake caliper clearance and wheel spacing, keeping tyre sidewall visibility to a bare minimum."
-    },
-    "Subaru Impreza WRX STi (GC8 Chassis)": {
-        "confirmed": "Subaru Impreza WRX STi (Classic GC8 Generation)",
-        "pcd": "5x100mm Hub Interface", "bore": "56.1mm", "oem": "16x7.0\" ET+53 Base / 17x7.5\" ET+51 Trims",
-        "perf_specs": "17x7.5\" ET+48 or 17x8.0\" ET+45 Balanced Setup", "perf_tire": "215/45R17 High-Performance Track Tire", "perf_note": "Classic Subarus have flat, narrow rear metal arches. Sizing up here maximizes grip boundaries without body rubs.",
-        "stretch_specs": "18x8.5\" ET+35 (Aggressive Stance Stretched Line)", "stretch_tire": "215/40R18 Aggressive Angle Sidewall Stretch", "stretch_note": "Pokes 8mm past fender line. Requires heavy rolling and negative alignment camber adjustments to tuck tread clear of sheet-metal.",
-        "thin_specs": "18x7.5\" ET+45 (Thin Low-Profile Stance)", "thin_tire": "205/35R18 Custom Low Profile Cushion", "thin_note": "Tucks wheel cleanly inside tight arches while maintaining a thin rubber baseline for an ultra-clean appearance."
+    "Honda Odyssey (RL5 Chassis)": {
+        "confirmed": "Honda Odyssey Van (RL5 Fourth Gen Platform)",
+        "pcd": "5x120mm", "bore": "64.1mm", "oem_w": 7.0, "oem_et": 50, "oem_dia": 17, "oem_txt": "17x7.0\" ET+50 | 235/65R17",
+        "sizes": {
+            "17\" Sizing Strategy": {"wheel": "17x8.0\" ET+40", "tire": "235/65R17 Stock Comfort Baseline", "note": "Maintains standard plush luxury cushion depths while tracking wheels 16mm wider to fill structural voids."},
+            "19\" Sizing Strategy": {"wheel": "19x8.5\" ET+35", "tire": "245/45R19 Premium VIP Touring", "note": "Fills out large panel gaps perfectly. Sits cleanly flush with factory side panels without sliding door interference gaps."},
+            "20\" Sizing Strategy": {"wheel": "20x10.0\" ET+25", "tire": "245/35R20 Extreme Sloped Stretch", "note": "Slammed cruiser stance profile. Lip edge extends 63mm outward. Heavy inner fender line modification highly advised."}
+        }
     }
 }
 
 # ---------------------------------------------------------
-# INTERACTIVE APPLICATION INTERFACE
+# INTERACTIVE APPLICATION CONSOLE DESIGN
 # ---------------------------------------------------------
 st.markdown('<div class="win98-window"><div class="win98-titlebar"><span>Lifeline_Radar.exe - Live Search Engine</span></div></div>', unsafe_allow_html=True)
 
-# THE SEARCH DROP-DOWN DISPLAY
 car_selection = st.selectbox(
     "Type to auto-search or pick your chassis:",
     list(VEHICLE_DATABASE.keys()),
@@ -89,18 +77,56 @@ car_selection = st.selectbox(
 if car_selection:
     specs = VEHICLE_DATABASE[car_selection]
     
-    # 1. VERIFIED OEM BASE CARD WINDOW
+    # PANEL 1: FACTORY OEM REFERENCE DATA CARD
     st.markdown('<div class="win98-window"><div class="win98-titlebar"><span>Chassis_Data_Readout.sys - Verified OEM Base</span></div></div>', unsafe_allow_html=True)
     st.write("TARGET PLATFORM RESOLVED: **" + specs['confirmed'] + "**")
     st.write("HUB PITCH PCD: **" + specs['pcd'] + "**")
-    st.write("CENTER BORE MAG: **" + specs['bore'] + "**")
-    st.write("OEM BASE LINE CONFIGURATION: **" + specs['oem'] + "**")
+    st.write("CENTER BORE DIA: **" + specs['bore'] + "**")
+    st.write("FACTORY WHEEL BASELINE: **" + specs['oem_txt'] + "**")
 
-    # 2. THE CUSTOM CLAUDE STRATEGY RESULTS readouts
-    st.markdown('<div class="win98-window"><div class="win98-titlebar"><span>Fitment_Strategies_Output.dll - Stance Presets</span></div></div>', unsafe_allow_html=True)
+    # PANEL 2: DIAMETER SIZE CHOICE SEGMENT (MATCHING YOUR SCREENSHOT)
+    st.markdown('<div class="win98-window"><div class="win98-titlebar"><span>Diameter_Strategy_Selector.dll</span></div></div>', unsafe_allow_html=True)
+    st.write("### 🎛️ Select Aftermarket Alloy Diameter Target:")
     
-    st.write("### 🟢 PROFILE 1: THE PERFORMANCE TRACK SETUP")
-    st.write("• **Wheel Blueprint:** " + specs['perf_specs'])
-    st.write("• **Tire Fitment:** " + specs['perf_tire'])
-    st.write("• **Mechanical Assessment:** " + specs['perf_note'])
-    st.write("---")
+    # This automatically maps the available strategy buttons to your chosen vehicle options
+    selected_size = st.radio(
+        "Choose rim dimension layout:",
+        list(specs['sizes'].keys()),
+        horizontal=True
+    )
+
+    if selected_size:
+        strategy = specs['sizes'][selected_size]
+        st.markdown(f'<div class="win98-window"><div class="win98-titlebar"><span>Fitment_Specs_Active_Profile</span></div></div>', unsafe_allow_html=True)
+        st.write(f"### 🟢 {selected_size} CONFIGURATION")
+        st.write(f"• **Recommended Sizing Setup:** `{strategy['wheel']}`")
+        st.write(f"• **Target Tire Configuration:** `{strategy['tire']}`")
+        st.write(f"• **Clearance Blueprint Assessment:** {strategy['note']}")
+
+    # PANEL 3: INTERACTIVE TUNER WORKSPACE ("TRY YOUR OWN WHEELS")
+    st.markdown('<div class="win98-window"><div class="win98-titlebar"><span>Custom_Wheel_Override_Tuner.exe</span></div></div>', unsafe_allow_html=True)
+    st.write("### 🛠️ Try Your Own Wheels & Tires")
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        user_dia = st.slider("Diameter (Inches)", min_value=13, max_value=22, value=int(specs['oem_dia']))
+    with col2:
+        user_width = st.slider("Width (Inches)", min_value=5.0, max_value=12.0, value=float(specs['oem_w'] + 1.0), step=0.5)
+    with col3:
+        user_offset = st.slider("Offset (mm)", min_value=-20, max_value=65, value=int(specs['oem_et'] - 10), step=1)
+
+    # MATHEMATICAL FITMENT CALCULATIONS
+    width_diff_mm = (user_width - specs['oem_w']) * 25.4
+    half_width_diff = width_diff_mm / 2
+    offset_shift = specs['oem_et'] - user_offset
+    calculated_poke = half_width_diff + offset_shift
+
+    st.markdown("#### Live Clearance Diagnostic Output:")
+    st.write(f"• **Fender Edge Poke Shift:** +{calculated_poke:.1f} mm outward past factory lines.")
+    
+    if calculated_poke > 35.0:
+        st.markdown('⚠️ <span class="fit-warn">WARNING ASSESSMENT: Heavy Outer Face Poke. Fender manipulation required.</span>', unsafe_allow_html=True)
+    else:
+        st.markdown('✅ <span class="fit-ok">SYSTEM ASSESSMENT: Clearance values float safely inside standard tolerances.</span>', unsafe_allow_html=True)
+else:
+    st.info("💻 Standing By... Simply click or start typing above to open a chassis radar dashboard profile.")
